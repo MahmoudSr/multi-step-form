@@ -1,0 +1,34 @@
+<div class="wrapper">
+  <h2 class="title">Personal info</h2>
+  <p class="subtitle">
+    Please Provide your name, email address, and phone number.
+  </p>
+
+  <form [formGroup]="personalInfoForm" class="form-info">
+    @for(input of inputs; track input) {
+    <div class="form-space">
+      <div class="error-field">
+        <label [for]="input.label">{{ input.label }}</label>
+        @if(personalInfoForm.get(input.control)?.invalid &&
+        (personalInfoForm.get(input.control)?.touched ||
+        personalInfoForm.get(input.control)?.dirty)) {
+        <p>This field is reqiured</p>
+        }
+      </div>
+
+      <input
+        [type]="input.type"
+        [formControlName]="input.control"
+        [placeholder]="input.placeholder"
+        required
+        [ngClass]="{
+          error:
+            personalInfoForm.get(input.control)?.invalid &&
+            (personalInfoForm.get(input.control)?.touched ||
+              personalInfoForm.get(input.control)?.dirty)
+        }"
+      />
+    </div>
+    }
+  </form>
+</div>

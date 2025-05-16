@@ -1,11 +1,20 @@
-<section style="background-image: url('images/bg-sidebar-desktop.svg')">
+<section
+  class="bg-change"
+  [ngStyle]="{ 'background-image': 'url(' + backgroundUrl + ')' }"
+>
   <ul class="step-list">
-    @for(step of steps; track step) {
-    <li class="step_number">
-      {{ step.number }}
+    @for (step of steps; track step) {
+    <li class="step-item">
+      <span class="step-number" [ngClass]="{ 'current-step': step.active }">
+        {{ step.number }}
+      </span>
+      @if (!isMobile) {
+      <div class="step-group">
+        <span class="step-desc">{{ step.desc }}</span>
+        <span class="step-info">{{ step.info }}</span>
+      </div>
+      }
     </li>
-    <li>{{ step.desc }}</li>
-    <li>{{ step.info }}</li>
     }
   </ul>
 </section>

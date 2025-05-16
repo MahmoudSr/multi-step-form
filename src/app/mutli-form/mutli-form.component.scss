@@ -1,0 +1,14 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  max-width: 60rem;
+  margin-inline: auto;
+  min-height: 100dvh;
+
+  @media (min-width: 500px) {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+}
