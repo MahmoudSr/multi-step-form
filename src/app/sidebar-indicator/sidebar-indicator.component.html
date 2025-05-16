@@ -1,0 +1,11 @@
+<section style="background-image: url('images/bg-sidebar-desktop.svg')">
+  <ul class="step-list">
+    @for(step of steps; track step) {
+    <li class="step_number">
+      {{ step.number }}
+    </li>
+    <li>{{ step.desc }}</li>
+    <li>{{ step.info }}</li>
+    }
+  </ul>
+</section>
