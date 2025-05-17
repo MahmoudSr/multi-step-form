@@ -30,25 +30,21 @@ export class SidebarIndicatorComponent {
       number: 1,
       info: 'YOUR INFO',
       desc: 'STEP 1',
-      active: true,
     },
     {
       number: 2,
       info: 'SELECT PLAN',
       desc: 'STEP 2',
-      active: false,
     },
     {
       number: 3,
       info: 'ADD-ONS',
       desc: 'STEP 3',
-      active: false,
     },
     {
       number: 4,
       info: 'SUMMARY',
       desc: 'STEP 4',
-      active: false,
     },
   ];
 }

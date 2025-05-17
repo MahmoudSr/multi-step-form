@@ -5,7 +5,10 @@
   <ul class="step-list">
     @for (step of steps; track step) {
     <li class="step-item">
-      <span class="step-number" [ngClass]="{ 'current-step': step.active }">
+      <span
+        class="step-number"
+        [ngClass]="{ 'current-step': step.number === currentStep }"
+      >
         {{ step.number }}
       </span>
       @if (!isMobile) {

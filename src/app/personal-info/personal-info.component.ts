@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -15,6 +15,9 @@ import {
 })
 export class PersonalInfoComponent implements OnInit {
   personalInfoForm!: FormGroup;
+  @Output() formValid = new EventEmitter<boolean>();
+  @Output() formData = new EventEmitter<any>();
+
   inputs = [
     {
       label: 'Name',
@@ -43,6 +46,13 @@ export class PersonalInfoComponent implements OnInit {
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required, Validators.pattern(/^\d{10,15}$/)]],
+    });
+
+    this.personalInfoForm.statusChanges.subscribe((status) => {
+      this.formValid.emit(this.personalInfoForm.valid);
+      if (this.personalInfoForm.valid) {
+        this.formData.emit(this.personalInfoForm.value);
+      }
     });
   }
 }
