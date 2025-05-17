@@ -1,11 +1,19 @@
 import { Component } from '@angular/core';
 import { SidebarIndicatorComponent } from '../sidebar-indicator/sidebar-indicator.component';
 import { PersonalInfoComponent } from '../personal-info/personal-info.component';
-
+import { CommonModule } from '@angular/common';
+import { SelectPlanComponent } from '../select-plan/select-plan.component';
+import { StepsWrapperComponent } from '../steps-wrapper/steps-wrapper.component';
 @Component({
   selector: 'app-mutli-form',
   standalone: true,
-  imports: [SidebarIndicatorComponent, PersonalInfoComponent],
+  imports: [
+    SidebarIndicatorComponent,
+    PersonalInfoComponent,
+    CommonModule,
+    SelectPlanComponent,
+    StepsWrapperComponent,
+  ],
   templateUrl: './mutli-form.component.html',
   styleUrl: './mutli-form.component.scss',
 })

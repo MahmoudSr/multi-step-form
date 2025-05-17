@@ -7,7 +7,7 @@
 
   // need ot fix the styling for the form on the big screen
 
-  @media (min-width: 500px) {
+  @media (min-width: 833px) {
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -16,4 +16,53 @@
     padding-block: 1.5rem;
     border-radius: 1rem;
   }
+}
+
+.form-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+
+  padding: 2rem;
+  background-color: white;
+
+  @media (min-width: 833px) {
+    position: static;
+  }
+}
+
+.btn {
+  cursor: pointer;
+  border: none;
+  font-size: var(--font-size-base);
+  font-family: var(--font-family-base);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.35rem;
+}
+
+.btn-back {
+  background-color: white;
+  color: var(--grey-500);
+}
+
+.btn-next {
+  background-color: var(--blue-950);
+  color: white;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
 }

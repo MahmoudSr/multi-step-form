@@ -5,16 +5,37 @@
 
   <!-- 4 forms -->
   <!-- form 1 -->
+  <div class="form-content">
+    <app-steps-wrapper [currentStep]="currentStep">
+      @if (currentStep === 1) {
+      <app-personal-info
+        (formValid)="stepValid(1, $event)"
+        (formData)="stepData(1, $event)"
+      />
+      } @if (currentStep === 2) {
+      <app-select-plan
+        (formValid)="stepValid(2, $event)"
+        (formData)="stepData(2, $event)"
+      />
+      }
+    </app-steps-wrapper>
 
-  @if(currentStep === 1) {
-  <app-personal-info
-    (formValid)="stepValid(1, $event)"
-    (formData)="stepData(1, $event)"
-  ></app-personal-info>
-  } @if(currentStep === 2) { phello }
-
-  <button (click)="nextStep()" [disabled]="isNextDisabled()">
-    {{ currentStep === 4 ? "Confirm" : "Next Step" }}
-  </button>
-  <button (click)="prevStep()" [disabled]="currentStep === 1">Go Back</button>
+    <div class="buttons">
+      <button
+        class="btn-back btn"
+        (click)="prevStep()"
+        [disabled]="currentStep === 1"
+      >
+        Go Back
+      </button>
+      <button
+        class="btn btn-next"
+        (click)="nextStep()"
+        [disabled]="isNextDisabled()"
+        [ngClass]="{ disabled: isNextDisabled() }"
+      >
+        {{ currentStep === 4 ? "Confirm" : "Next Step" }}
+      </button>
+    </div>
+  </div>
 </section>

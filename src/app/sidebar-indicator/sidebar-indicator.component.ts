@@ -16,7 +16,7 @@ export class SidebarIndicatorComponent {
 
   constructor(private breakpointObserver: BreakpointObserver) {
     this.breakpointObserver
-      .observe(['(max-width: 500px)'])
+      .observe(['(max-width: 833px)'])
       .subscribe((result) => {
         this.isMobile = result.matches;
         this.backgroundUrl = this.isMobile

@@ -39,7 +39,10 @@ body {
   font-size: var(--font-size-base);
   color: var(--blue-950);
   background-color: var(--blue-100);
-  padding-inline: 1rem;
+
+  @media (min-width: 833px) {
+    padding-inline: 1rem;
+  }
 }
 
 img {

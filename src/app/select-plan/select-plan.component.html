@@ -1,0 +1,48 @@
+<form [formGroup]="selectPlanForm" class="plan-form">
+  <div class="plans">
+    @for (plan of plans; track plan.name) {
+    <div
+      class="plan-card"
+      (click)="selectPlan(plan.control)"
+      [class.selected]="
+        selectPlanForm.get('selectedPlan')?.value === plan.control
+      "
+    >
+      <div class="icon">{{ plan.icon }}</div>
+      <div class="details">
+        <strong>{{ plan.name }}</strong>
+        <span>{{ getPrice(plan) }}</span>
+
+        @if (selectPlanForm.get('billing')?.value === 'Yearly') {
+        <small>{{ plan.free }}</small>
+        }
+      </div>
+    </div>
+    }
+  </div>
+
+  <!-- Toggle -->
+  <div class="billing-toggle">
+    <button
+      type="button"
+      [class.active]="selectPlanForm.get('billing')?.value === 'Monthly'"
+      (click)="selectBilling('Monthly')"
+    >
+      Monthly
+    </button>
+
+    <button
+      type="button"
+      [class.active]="selectPlanForm.get('billing')?.value === 'Yearly'"
+      (click)="selectBilling('Yearly')"
+    >
+      Yearly
+    </button>
+  </div>
+
+  <!-- Validation message -->
+  @if (selectPlanForm.get('selectedPlan')?.invalid &&
+  selectPlanForm.get('selectedPlan')?.touched) {
+  <div class="error">Please select a plan to continue.</div>
+  }
+</form>

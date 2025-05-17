@@ -48,7 +48,7 @@ export class PersonalInfoComponent implements OnInit {
       phone: ['', [Validators.required, Validators.pattern(/^\d{10,15}$/)]],
     });
 
-    this.personalInfoForm.statusChanges.subscribe((status) => {
+    this.personalInfoForm.statusChanges.subscribe(() => {
       this.formValid.emit(this.personalInfoForm.valid);
       if (this.personalInfoForm.valid) {
         this.formData.emit(this.personalInfoForm.value);
