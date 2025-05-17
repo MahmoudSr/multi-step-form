@@ -9,11 +9,13 @@
     <app-steps-wrapper [currentStep]="currentStep">
       @if (currentStep === 1) {
       <app-personal-info
+        [prefillData]="stepDatas[1]"
         (formValid)="stepValid(1, $event)"
         (formData)="stepData(1, $event)"
       />
       } @if (currentStep === 2) {
       <app-select-plan
+        [prefillData]="stepDatas[2]"
         (formValid)="stepValid(2, $event)"
         (formData)="stepData(2, $event)"
       />
@@ -31,7 +33,6 @@
       <button
         class="btn btn-next"
         (click)="nextStep()"
-        [disabled]="isNextDisabled()"
         [ngClass]="{ disabled: isNextDisabled() }"
       >
         {{ currentStep === 4 ? "Confirm" : "Next Step" }}

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -16,6 +16,7 @@ import {
 })
 export class SelectPlanComponent implements OnInit {
   selectPlanForm!: FormGroup;
+  @Input() prefillData: any;
 
   @Output() formValid = new EventEmitter<boolean>();
   @Output() formData = new EventEmitter<any>();
@@ -51,6 +52,13 @@ export class SelectPlanComponent implements OnInit {
       selectedPlan: [null, Validators.required],
       billing: ['Monthly', Validators.required],
     });
+
+    if (this.prefillData) {
+      this.selectPlanForm.setValue(this.prefillData);
+    }
+
+    // this.formValid.emit(this.selectPlanForm.valid);
+    // this.formData.emit(this.selectPlanForm.value);
 
     this.selectPlanForm.statusChanges.subscribe(() => {
       this.formValid.emit(this.selectPlanForm.valid);
