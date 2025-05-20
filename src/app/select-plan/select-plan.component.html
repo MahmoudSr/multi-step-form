@@ -13,9 +13,11 @@
         <strong>{{ plan.name }}</strong>
         <span>{{ getPrice(plan) }}</span>
 
-        @if (selectPlanForm.get('billing')?.value === 'Yearly') {
-        <small>{{ plan.free }}</small>
-        }
+        <div style="height: 14px">
+          @if (selectPlanForm.get('billing')?.value === 'Yearly') {
+          <small>{{ plan.free }}</small>
+          }
+        </div>
       </div>
     </div>
     }
